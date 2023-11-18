@@ -31,6 +31,7 @@ export class AreasComponent implements OnInit {
   ngOnInit(): void {
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
+      pathItems = pathItems.filter((value) => value !== 'sunbeta');
       if (pathItems.length>0){
         this.selectedCountryName = pathItems[0]
         if (pathItems.length>1){
