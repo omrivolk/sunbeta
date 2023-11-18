@@ -1,0 +1,79 @@
+<!-- src/app/path-display/path-display.component.html -->
+<div id="top_nav">
+  <div id="logo_div"><img src="./assets/logo.svg"/></div>
+  
+  <div id="page_title">
+    SunBeta
+  </div>  
+  <div style="padding: 10px;"><img src="./assets/menu.svg"/></div>
+</div>
+
+<div id="countries_select" class="full_page" *ngIf="selectedCountryName == null">
+  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
+  placeholder="Type to search countries">
+
+  <ul class="areas_list">
+
+    <!-- <li *ngFor="let country of countries" (click)="countryClicked(country)"> -->
+    <li *ngFor="let country of countries" ><a href="{{country.name}}">
+      {{country.name}} <span class="local_name" *ngIf="country.localName">- {{country.localName}} </span></a>
+    </li>
+
+  </ul>
+
+</div>
+
+
+
+
+<div id="areas_select" class="full_page" *ngIf="selectedCountryName && selectedAreaName == null">
+
+	  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
+  placeholder="Type to search areas">
+
+  <ul class="areas_list">
+
+    <li *ngFor="let area of filtered_areas"><a href="{{selectedCountryName}}/{{area.name}}">
+      {{area.name}} <span class="local_name" *ngIf="area.localName">- {{area.localName}} </span></a>
+    </li>
+
+  </ul>
+</div>
+
+
+
+
+
+<div id="sectors_select" class="full_page" *ngIf="selectedAreaName">
+<h1>{{this.selectedArea}}</h1>
+  <span class="pointer" (click)="changeMonth(-1)"> -M </span>
+  <span  class="pointer"(click)="changeDay(-1)"> -D </span>
+  <input type="date" id="datePicker" (change)="dateChanged(event);"/>
+  <span  class="pointer"(click)="changeDay(1)"> +D </span>
+  <span class="pointer" (click)="changeMonth(1)"> +M </span>
+  <br><br>
+  <table>
+   <thead>
+    <tr>
+     <th (click)="sortBy('sector_name')">
+      <a href="#" class="sort-by"></a>Sector
+     </th>
+     <th (click)="sortBy('shade')">
+<a href="#" class="sort-by"></a>Shade
+     </th>
+    </tr>
+    <tr>
+     <th>
+      
+     </th>
+     <th id="time_line">
+
+     </th>
+    </tr>
+   </thead>
+   <tbody id="tbody_el">
+  
+   </tbody>
+  </table>
+</div>
+
