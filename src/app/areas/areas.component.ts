@@ -1,5 +1,4 @@
 // src/app/path-display/path-display.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +12,7 @@ export class AreasComponent implements OnInit {
   selectedCountryName = null;
   selectedAreaName = null;
 
-  title = 'Sunny';
+  title = 'Sun Beta';
 
   countries =[]
   areas = []
@@ -24,11 +23,12 @@ export class AreasComponent implements OnInit {
   selectedArea = null
 
   shade_data = {}
-  sort_type = 'shade'
+  sort_type = 'a_to_z'
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
       pathItems = pathItems.filter((value) => value !== 'sunbeta');
@@ -75,7 +75,9 @@ export class AreasComponent implements OnInit {
     .then((res) => res.json())
     .then((shadeData) => {
       this.shade_data = shadeData;
-      (<HTMLInputElement>document.getElementById("datePicker")).value = '2023-11-12';
+      const currentDate = new Date();
+      const formattedDay = currentDate.toISOString().split("T")[0];
+      (<HTMLInputElement>document.getElementById("datePicker")).value = formattedDay;
       this.dateChanged()
     });
   }
@@ -138,21 +140,49 @@ export class AreasComponent implements OnInit {
       return s;
   }
 
+
   sortBy(v){
-        if (v == 'sector_name'){
-            if (this.sort_type=='a_to_z'){
-                this.sort_type = 'z_to_a'
-            } else {
-                this.sort_type = 'a_to_z'
-            }
-        } else if (v == 'shade'){
-            if (this.sort_type=='shade'){
-                this.sort_type = 'sun'
-            } else {
-                this.sort_type = 'shade'
-            }
-        } 
-        this.dateChanged()
+      function addClass(eId,name){
+        document.getElementById(eId).classList.add(name)
+      }
+      function removeClass(eId,name){
+        document.getElementById(eId).classList.remove(name)
+      }
+
+      removeClass('sort_by_shade_arrow',"sort-by-down")
+      removeClass('sort_by_name_arrow',"sort-by-down")
+      removeClass('sort_by_shade_arrow',"sort-by-up")
+      removeClass('sort_by_name_arrow',"sort-by-up")
+      removeClass('sort_by_name_th',"bold")
+      removeClass('sort_by_shade_th',"bold")
+
+      if (v == 'sector_name'){
+
+        addClass('sort_by_name_th','bold')
+        addClass('sort_by_shade_arrow','sort-by-down')
+        addClass('sort_by_shade_arrow','sort-by-up')
+
+        if (this.sort_type=='a_to_z'){
+           
+            this.sort_type = 'z_to_a'
+            addClass('sort_by_name_arrow',"sort-by-up")
+        } else {
+            this.sort_type = 'a_to_z'
+            addClass('sort_by_name_arrow',"sort-by-down")
+        }
+      } else if (v == 'shade'){
+        addClass('sort_by_shade_th','bold')
+        addClass('sort_by_name_arrow','sort-by-down')
+        addClass('sort_by_name_arrow','sort-by-up')
+        if (this.sort_type=='shade'){
+          addClass('sort_by_shade_arrow',"sort-by-up")
+            this.sort_type = 'sun'
+        } else {
+            this.sort_type = 'shade'
+            addClass('sort_by_shade_arrow',"sort-by-down")
+        }
+      } 
+      this.dateChanged()
     }
 
    getSortedSectorsKeys(day_shade_data){
@@ -251,6 +281,7 @@ export class AreasComponent implements OnInit {
 
         var table_rows = ''
         var sortedKeys = this.getSortedSectorsKeys(day_shade_data)
+
 
         for (var sector_name of sortedKeys){
             table_rows += this.getSectorTableRow(sector_name,day_shade_data)
