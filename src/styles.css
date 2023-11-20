@@ -220,6 +220,8 @@ ul {
       user-select: none;
       -webkit-tap-highlight-color: transparent;
 }
+
+
 #date_div {
     user-select: none;
     width: 100%;

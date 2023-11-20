@@ -22,14 +22,16 @@ export class AreasComponent implements OnInit {
   filtered_countries = []
   selectedCountry = null
   selectedArea = null
-
+  tiny = false;
   shade_data = {}
   sort_type = 'a_to_z'
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    if (window.screen.width <410) { 
+      this.tiny = true;
+    }
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
       if (pathItems.length>0){

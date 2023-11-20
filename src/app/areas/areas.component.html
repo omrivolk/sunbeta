@@ -44,14 +44,16 @@
 <h1>{{this.selectedAreaName}}</h1>
 
   <div id="date_div">
-
+<div class="big_td" *ngIf="tiny">
+      <input type="date" id="datePicker" (change)="dateChanged(event);"/>
+    </div><br>
     <div class="small_td" (click)="changeMonth(-1)">
       - Month
     </div>
       <div class="small_td" (click)="changeDay(-7)">
         - Week
     </div>
-    <div class="big_td">
+    <div class="big_td" *ngIf="!tiny">
       <input type="date" id="datePicker" (change)="dateChanged(event);"/>
     </div>
     <div class="small_td" (click)="changeDay(+7)">
