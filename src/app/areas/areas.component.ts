@@ -19,6 +19,7 @@ export class AreasComponent implements OnInit {
 
   inputText = ''
   filtered_areas = []
+  filtered_countries = []
   selectedCountry = null
   selectedArea = null
 
@@ -54,6 +55,7 @@ export class AreasComponent implements OnInit {
           .then((res) => res.json())
           .then((data) => {
             this.countries = data;
+            this.filtered_countries = this.countries
           });
   }
 
@@ -84,7 +86,18 @@ export class AreasComponent implements OnInit {
     });
   }
 
+  getFilteredCountries(){
+    this.inputText = (<HTMLInputElement>document.getElementById("countries_input")).value
+    this.filtered_countries = []
+    for (var country of this.countries){
+      if (this.isInArea(country)){
+        this.filtered_countries.push(country)
+      }
+    }
+  }
+
   getFilteredAreas(){
+    this.inputText = (<HTMLInputElement>document.getElementById("areas_input")).value
     this.filtered_areas = []
     for (var area of this.areas){
       if (this.isInArea(area)){

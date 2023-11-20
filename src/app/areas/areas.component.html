@@ -11,16 +11,18 @@
   <div style="font-size: 1.3rem;padding: 20px;" class="bold">
    Daily sun and shade times at the crag
   </div>
-  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
+  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredCountries()" id="countries_input"
   placeholder="Type to search countries">
   <ul class="areas_list">
-    <li *ngFor="let country of countries" (click)="openUrl(country.name)"><a href="{{country.name}}">
+    <li *ngFor="let country of filtered_countries" (click)="openUrl(country.name)"><a href="{{country.name}}">
       {{country.name}} <span class="local_name" *ngIf="country.localName">- {{country.localName}} </span></a>
     </li>
   </ul>
 </div>
 
 <div id="areas_select" class="full_page" *ngIf="selectedCountryName && selectedAreaName == null">
+  <h1>{{this.selectedCountryName}}</h1>
+
 	  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
   placeholder="Type to search areas">
   <ul class="areas_list">
