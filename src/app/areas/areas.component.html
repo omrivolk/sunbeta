@@ -2,14 +2,14 @@
 <div id="top_nav">
   <div id="top_left"></div>
   <div id="top_center">
-   <a href="/" *ngIf="selectedCountryName != null"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo-transparent (2).png"/></a>
+   <a href="/" *ngIf="selectedCountryName != null"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
   </div>  
   <div id="top_right"><img width="40" height="40" src="./assets/icons8-menu-50.png"/></div>
 </div>
 
 <div id="countries_select" class="full_page" *ngIf="selectedCountryName == null">
   <div style="font-size: 2rem;padding: 20px;margin:20px 0" class="bold">
-    <img  width="360" height="153" src="./assets/sun-beta-high-resolution-logo-transparent (2).png"/>
+    <img  width="360" height="153" src="./assets/sun-beta-high-resolution-logo.png"/>
      <br> <br>
    Daily sun and shade <br>
    times at the crag<br>
@@ -32,6 +32,8 @@
 	  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
   placeholder="Type to filter areas">
   <ul class="areas_list">
+        <div class="bold" style="padding: 10px;font-size:1.2rem;">Areas</div>
+
     <li *ngFor="let area of filtered_areas" (click)="openUrl(selectedCountryName+'/'+area.name)"><a href="{{selectedCountryName}}/{{area.name}}">
       {{area.name}} <span class="local_name" *ngIf="area.localName">- {{area.localName}} </span></a>
     </li>
