@@ -173,6 +173,7 @@ ul {
       font-size: 0.8rem;
       cursor: pointer;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 .big_td{
  display: inline-block;
@@ -180,12 +181,14 @@ ul {
       height: 60px;
       cursor: pointer;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
 }
 #date_div {
     user-select: none;
     width: 100%;
     text-align: center;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #sectors_select #sectors_table {
