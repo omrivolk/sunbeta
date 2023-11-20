@@ -8,8 +8,8 @@
 </div>
 
 <div id="countries_select" class="full_page" *ngIf="selectedCountryName == null">
-  <div style="font-size: 1.3rem;padding: 20px;">Make the most of your climbing day<br>
-   with accurate daily sun and shade times 
+  <div style="font-size: 1.3rem;padding: 20px;">
+   Daily sun and shade times at the crag
   </div>
   <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
   placeholder="Type to search countries">
