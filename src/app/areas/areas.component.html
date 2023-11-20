@@ -13,7 +13,7 @@
    times at the crag<br>
   </div>
   <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredCountries()" id="countries_input"
-  placeholder="Type to search countries">
+  placeholder="Type to filter countries">
   <ul class="areas_list">
     <li *ngFor="let country of filtered_countries" (click)="openUrl(country.name)"><a href="{{country.name}}">
       {{country.name}} <span class="local_name" *ngIf="country.localName">- {{country.localName}} </span></a>
@@ -25,7 +25,7 @@
   <h1>{{this.selectedCountryName}}</h1>
 
 	  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
-  placeholder="Type to search areas">
+  placeholder="Type to filter areas">
   <ul class="areas_list">
     <li *ngFor="let area of filtered_areas" (click)="openUrl(selectedCountryName+'/'+area.name)"><a href="{{selectedCountryName}}/{{area.name}}">
       {{area.name}} <span class="local_name" *ngIf="area.localName">- {{area.localName}} </span></a>
