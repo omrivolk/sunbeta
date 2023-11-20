@@ -8,7 +8,7 @@
 </div>
 
 <div id="countries_select" class="full_page" *ngIf="selectedCountryName == null">
-  <div style="font-size: 1.3rem;padding: 20px;">
+  <div style="font-size: 1.3rem;padding: 20px;" class="bold">
    Daily sun and shade times at the crag
   </div>
   <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
