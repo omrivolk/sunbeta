@@ -12,7 +12,9 @@ box-sizing: border-box;         /* Opera/IE 8+ */
  }
 
 
-
+#large_logo{
+    width: 90%;
+}
 
 #datePicker{
     padding: 0;
