@@ -140,14 +140,17 @@ ul {
       height: 60px;
       font-size: 0.8rem;
       cursor: pointer;
+      user-select: none;
     }
 .big_td{
  display: inline-block;
       width: 180px;
       height: 60px;
       cursor: pointer;
+      user-select: none;
 }
 #date_div {
+    user-select: none;
     width: 100%;
     text-align: center;
     cursor: pointer;
