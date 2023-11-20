@@ -38,13 +38,14 @@ box-sizing: border-box;         /* Opera/IE 8+ */
 #top_right {
     width: 60px;
     height: 100%;
-    padding: 5px;
+    padding: 10px;
 /*    background-color: red;*/
 }
 
 #top_center {
     width: calc(100% - 120px);
     height: 100%;
+    padding-top: 10px;
 }
 
 #top_right img {
@@ -67,7 +68,6 @@ box-sizing: border-box;         /* Opera/IE 8+ */
  #top_nav {
     width: 100%;
     padding: 0;
-    padding-top: 10px;
     height: 60px;
     display: flex;
     text-align: center;
