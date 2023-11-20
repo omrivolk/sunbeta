@@ -116,21 +116,20 @@ ul {
 }
 
 #areas_input {
+
     width:calc(100% - 100px);
     margin: 0 auto;
     font-size:1.2rem;
-
     background-image: url('./assets/mg.svg');
-    background-position: 12px 12px; 
-      background-size: 18px;
-      background-repeat: no-repeat;
+    background-position: 12px 14px; 
+    background-size: 18px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
 
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  
-  padding: 12px 20px 12px 40px;
 }
 
 .areas_list {
