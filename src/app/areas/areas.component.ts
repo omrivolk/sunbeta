@@ -46,6 +46,9 @@ export class AreasComponent implements OnInit {
     });
   }
 
+  openUrl(url){
+    window.location.href = url
+  }
   getCountryList(){
     var url = `./assets/countries/countries_list.json`
         fetch(url)
