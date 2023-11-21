@@ -48,19 +48,19 @@
       <input type="date" id="datePicker" (change)="dateChanged(event);"/>
     </div><br>
     <div class="small_td" (click)="changeMonth(-1)">
-      - Month
+      -<br>Month
     </div>
       <div class="small_td" (click)="changeDay(-7)">
-        - Week
+        -<br>Week
     </div>
     <div class="big_td" *ngIf="!tiny">
       <input type="date" id="datePicker" (change)="dateChanged(event);"/>
     </div>
     <div class="small_td" (click)="changeDay(+7)">
-      + Week
+      +<br>Week
     </div>  
     <div class="small_td" (click)="changeMonth(+1)">
-      + Month
+      +<br>Month
     </div> 
 
   </div>
