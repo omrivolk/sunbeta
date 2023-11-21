@@ -364,6 +364,7 @@ th {
   font-size: 0.8rem;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+    user-select: none;
 }
 
 .justify_left {
@@ -378,7 +379,7 @@ th {
   align-items: center;
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
-
+  user-select: none;
 }
 
 .date_jump_section img {
@@ -386,6 +387,7 @@ th {
   height: 12px;
   margin: 1px; /* Optional: Add some spacing between text and image */
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .overlay {
@@ -416,4 +418,8 @@ th {
 .overlay a {
  text-decoration: none;
  color: black;
+}
+
+.overlay img {
+    width: 90%;
 }
