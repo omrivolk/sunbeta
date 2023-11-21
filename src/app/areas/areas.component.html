@@ -2,7 +2,7 @@
 <div id="top_nav">
   <!-- <div id="top_left"></div> -->
   <div id="top_center">
-   <a href="/" *ngIf="selectedCountryName != null || nav_open"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
+   <a href="/" *ngIf="selectedCountryName != null"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
   </div>  
   <div id="top_right" (click)="toggle_nav()">
     <img *ngIf="!nav_open" width="40" height="40" src="./assets/icons8-menu-50.png"/>
@@ -43,7 +43,12 @@
   </ul>
 </div>
 
-<div id="sectors_select" class="full_page" *ngIf="selectedAreaName">
+
+
+
+
+
+<div id="sectors_select" class="full_page"  *ngIf="selectedAreaName">
 <h1>{{this.selectedAreaName}}</h1>
 
 <!--   <div id="date_div">
@@ -71,6 +76,7 @@
   <div class="date_jump_section date_select_section" *ngIf="tiny">
     <input type="date" id="datePicker" (change)="dateChanged(event);"/>
   </div>
+
 <div class="date_select_container">
 
   <div class="date_jump_section justify_right" (click)="changeMonth(-1)">
@@ -88,7 +94,7 @@
     <span>Week</span>
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqklEQVR4nO3ZQQrCQBBE0e8JDdJDFvHsLgwKQW8QQQmM4MLsq5t6ILhM8SeQKJhJacATuAEDSR2AB/DunxUYSWr5GZJ6zKlffIkx8WfMCziTUHiMqHAZUeEyosJlRLmMKpdR5TKqSpUZd17OBoqMmSky5EoyJY5W27nZJxLxCBUuocIlVLiECpdQ4RIqmh8ARbQKJY5V/gydK4zY3CuM+B6t7UeCS/9uVtUHEhTs/ZXHkMQAAAAASUVORK5CYII=" alt="Next Week">
   </div>
-  <div class="date_jump_section justify_left" click)="changeMonth(-1)">
+  <div class="date_jump_section justify_left" (click)="changeMonth(-1)">
     <span>Month</span>
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqklEQVR4nO3ZQQrCQBBE0e8JDdJDFvHsLgwKQW8QQQmM4MLsq5t6ILhM8SeQKJhJacATuAEDSR2AB/DunxUYSWr5GZJ6zKlffIkx8WfMCziTUHiMqHAZUeEyosJlRLmMKpdR5TKqSpUZd17OBoqMmSky5EoyJY5W27nZJxLxCBUuocIlVLiECpdQ4RIqmh8ARbQKJY5V/gydK4zY3CuM+B6t7UeCS/9uVtUHEhTs/ZXHkMQAAAAASUVORK5CYII=" alt="Next Month">
   </div>
@@ -104,7 +110,7 @@
       <span  class="sort-by sort-by-down" id="sort_by_name_arrow"></span>Sector
      </th>
      <th (click)="sortBy('shade')" id="sort_by_shade_th">
-<span  class="sort-by sort-by-down sort-by-up" id="sort_by_shade_arrow"></span>Shade
+      <span  class="sort-by sort-by-down sort-by-up" id="sort_by_shade_arrow"></span>Shade
      </th>
     </tr>
     <tr>
@@ -117,6 +123,7 @@
    <tbody id="tbody_el">
    </tbody>
   </table>
+
 </div>
 
 
