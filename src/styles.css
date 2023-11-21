@@ -389,12 +389,18 @@ th {
 }
 
 .overlay {
-    position: fixed; top: 60px; right: 0; bottom: 0; left: 0;
-    width: 100%; height: 100%;
+    position: fixed; 
+    top: 60px; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
     max-width: 600px;
     background-color: white;
     margin: 0px auto;
-    padding-left: 10px;
+    padding: 0 20px;
+    text-align: justify;
 }
 
 .overlay ul {
