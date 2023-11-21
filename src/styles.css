@@ -204,14 +204,20 @@ ul {
    
 
 .small_td{
- display: inline-block;
+ display: inline-flex;
       width: 54px;
       height: 60px;
       font-size: 0.8rem;
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+
     }
+.small_td img {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px; /* Optional: Add some spacing between text and image */
+  }
 .big_td{
  display: inline-block;
       width: 180px;
@@ -341,3 +347,36 @@ th {
 .bold {
     font-weight: bold;
 }
+
+
+
+    .container {
+      width: 100%;
+      display: flex;
+      margin: 16px 0;
+    }
+
+    .section {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      vertical-align:center;
+      padding:0;
+      border:0;
+     
+    }
+
+    .date-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section img {
+      width: 12px;
+      height: 12px;
+      margin: 5px; /* Optional: Add some spacing between text and image */
+    }
