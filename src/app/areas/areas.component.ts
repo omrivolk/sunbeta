@@ -28,11 +28,11 @@ export class AreasComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-          (<HTMLInputElement>document.getElementById("screen_width")).innerHTML = window.screen.innerWidth.toString()
 
-    if (window.screen.width < 410) { 
+    if (window.screen.width < 400) { 
       this.tiny = true;
     }
+    
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
       if (pathItems.length>0){
