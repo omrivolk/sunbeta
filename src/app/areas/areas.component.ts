@@ -25,6 +25,9 @@ export class AreasComponent implements OnInit {
   tiny = false;
   shade_data = {}
   sort_type = 'a_to_z'
+
+  nav_open=false;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -32,7 +35,7 @@ export class AreasComponent implements OnInit {
     if (window.screen.width < 400) { 
       this.tiny = true;
     }
-    
+
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
       if (pathItems.length>0){
@@ -47,6 +50,10 @@ export class AreasComponent implements OnInit {
         this.getCountryList()
       }
     });
+  }
+
+  toggle_nav(){
+    this.nav_open = !this.nav_open
   }
 
   openUrl(url){
