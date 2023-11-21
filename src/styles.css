@@ -67,14 +67,9 @@ box-sizing: border-box;         /* Opera/IE 8+ */
     text-align: left;
 }
 
-
-
-
-
 #top_center img {
     height: 100%;
 }
-
 
 
  #top_nav {
@@ -111,7 +106,6 @@ box-sizing: border-box;         /* Opera/IE 8+ */
 .logo {
     border: 0.1px solid black;
 }
-
 
 .full_page {
     padding: 5px;
@@ -368,16 +362,22 @@ th {
   padding:0;
   border:0;
   font-size: 0.8rem;
-       -webkit-tap-highlight-color: transparent;
-       cursor: pointer;
-
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 }
 
+.justify_left {
+    justify-content: left;
+}
+
+.justify_right {
+    justify-content: right;
+}
 .date_select_section {
   display: flex;
   align-items: center;
   justify-content: center;
-        -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 
 
 }
@@ -386,6 +386,8 @@ th {
   width: 12px;
   height: 12px;
   margin: 1px; /* Optional: Add some spacing between text and image */
-        -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 
 }
+
+
