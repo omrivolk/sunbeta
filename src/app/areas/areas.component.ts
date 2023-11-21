@@ -28,7 +28,7 @@ export class AreasComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-          (<HTMLInputElement>document.getElementById("screen_width")).innerHTML = window.screen.width.toString()
+          (<HTMLInputElement>document.getElementById("screen_width")).innerHTML = window.screen.innerWidth.toString()
 
     if (window.screen.width < 410) { 
       this.tiny = true;
