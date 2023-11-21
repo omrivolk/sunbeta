@@ -25,11 +25,12 @@ export class AreasComponent implements OnInit {
   tiny = false;
   shade_data = {}
   sort_type = 'a_to_z'
-
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (window.screen.width <410) { 
+          (<HTMLInputElement>document.getElementById("screen_width")).innerHTML = window.screen.width.toString()
+
+    if (window.screen.width < 410) { 
       this.tiny = true;
     }
     this.route.url.subscribe(segments => {
