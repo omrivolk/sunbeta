@@ -379,5 +379,5 @@ th {
     .section img {
       width: 12px;
       height: 12px;
-      margin: 5px; /* Optional: Add some spacing between text and image */
+      margin: 1px; /* Optional: Add some spacing between text and image */
     }
