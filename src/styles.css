@@ -394,6 +394,7 @@ th {
     max-width: 600px;
     background-color: white;
     margin: 0px auto;
+    padding-left: 10px;
 }
 
 .overlay ul {
