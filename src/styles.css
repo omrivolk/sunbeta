@@ -60,10 +60,11 @@ box-sizing: border-box;         /* Opera/IE 8+ */
     border-radius: 10px;
 }
 #top_center {
-    width: calc(100% - 120px);
+    width: calc(100% - 60px);
     height: 100%;
     padding:10px;
     padding-right: 40px;
+    text-align: left;
 }
 
 
@@ -72,8 +73,6 @@ box-sizing: border-box;         /* Opera/IE 8+ */
 
 #top_center img {
     height: 100%;
-
-
 }
 
 
