@@ -11,7 +11,7 @@ export class AreasComponent implements OnInit {
   pathItems: string[] = [];
   selectedCountryName = null;
   selectedAreaName = null;
-
+  selectedAreaNameForDisplay = null;
   title = 'Sun Beta';
 
   where = null
@@ -95,6 +95,7 @@ export class AreasComponent implements OnInit {
     .then((res) => res.json())
     .then((shadeData) => {
       this.shade_data = shadeData;
+      this.selectedAreaNameForDisplay = shadeData['name']
       const currentDate = new Date();
       const formattedDay = currentDate.toISOString().split("T")[0];
       (<HTMLInputElement>document.getElementById("datePicker")).value = formattedDay;
@@ -166,6 +167,9 @@ export class AreasComponent implements OnInit {
 
   normName(s: string): string {
       s = s.trim();
+      s = s.replace("'","")
+      s = s.replace("(","")
+      s = s.replace(")","")
       s = s.toLowerCase();
       s = s.split(' ').join('_');
       return s;

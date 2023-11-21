@@ -403,6 +403,7 @@ th {
     margin: 0px auto;
     padding: 0 20px;
     text-align: justify;
+    font-size: 1rem;
 }
 
 .overlay ul {
@@ -422,5 +423,4 @@ th {
 
 .overlay img {
     width: 100%;
-    margin: 0 auto;
 }

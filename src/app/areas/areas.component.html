@@ -23,7 +23,7 @@
   
   <ul class="areas_list">
     <div class="bold" style="padding: 10px;font-size:1.2rem;">Countries</div>
-    <li *ngFor="let country of filtered_countries" (click)="openUrl(country.name)"><a href="{{country.name}}">
+    <li *ngFor="let country of filtered_countries" (click)="openUrl(normName(country.name))"><a href="{{country.name}}">
       {{country.name}} <span class="local_name" *ngIf="country.localName">- {{country.localName}} </span></a>
     </li>
   </ul>
@@ -37,7 +37,7 @@
   <ul class="areas_list">
         <div class="bold" style="padding: 10px;font-size:1.2rem;">Areas</div>
 
-    <li *ngFor="let area of filtered_areas" (click)="openUrl(selectedCountryName+'/'+area.name)"><a href="{{selectedCountryName}}/{{area.name}}">
+    <li *ngFor="let area of filtered_areas" (click)="openUrl(normName(selectedCountryName)+'/'+normName(area.name))"><a href="{{normName(selectedCountryName)}}/{{normName(area.name)}}">
       {{area.name}} <span class="local_name" *ngIf="area.localName">- {{area.localName}} </span></a>
     </li>
   </ul>
@@ -49,7 +49,7 @@
 
 
 <div id="sectors_select" class="full_page"  *ngIf="selectedAreaName">
-<h1>{{this.selectedAreaName}}</h1>
+<h1>{{this.selectedAreaNameForDisplay}}</h1>
 
 <!--   <div id="date_div">
 <div class="big_td" *ngIf="tiny">
@@ -147,6 +147,7 @@
     Hi, my name is Om and I'm a "professional holiday climber". I don't climb that hard but I have taken to a professional level the process of optimizing my climbing days. 
   </p>
   <p>
-    One of the main factors is sun and shade times at the crag and guidebooks only give you a general morning/evening description and at some point I realized it can't be that hard to figure out exactly. 
+    One of the main factors is sun and shade times at the crag and guidebooks only give you a general morning/evening description so at some point I realized it can't be that hard to figure out exactly. 
   </p>
+
 </div>
