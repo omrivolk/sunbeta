@@ -405,3 +405,8 @@ th {
 .overlay li {
     padding: 20px;
 }
+
+.overlay a {
+ text-decoration: none;
+ color: black;
+}
