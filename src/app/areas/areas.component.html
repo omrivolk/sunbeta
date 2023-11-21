@@ -2,7 +2,7 @@
 <div id="top_nav">
   <!-- <div id="top_left"></div> -->
   <div id="top_center">
-   <a href="/" *ngIf="selectedCountryName != null"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
+   <a href="/" *ngIf="selectedCountryName != null || nav_open"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
   </div>  
   <div id="top_right" (click)="toggle_nav()">
     <img *ngIf="!nav_open" width="40" height="40" src="./assets/icons8-menu-50.png"/>
