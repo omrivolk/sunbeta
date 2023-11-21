@@ -14,6 +14,8 @@ export class AreasComponent implements OnInit {
 
   title = 'Sun Beta';
 
+  where = null
+
   countries =[]
   areas = []
 
@@ -39,12 +41,16 @@ export class AreasComponent implements OnInit {
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
       if (pathItems.length>0){
-        this.selectedCountryName = pathItems[0]
-        if (pathItems.length>1){
-          this.selectedAreaName = pathItems[1]
-          this.getShadeData()
+        if (['about','how-it-works','contact'].includes(pathItems[0].toLowerCase())){
+          this.where = pathItems[0]
         } else {
-          this.getAreaList()
+          this.selectedCountryName = pathItems[0]
+          if (pathItems.length>1){
+            this.selectedAreaName = pathItems[1]
+            this.getShadeData()
+          } else {
+            this.getAreaList()
+          }
         }
       } else {
         this.getCountryList()

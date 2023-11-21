@@ -2,7 +2,7 @@
 <div id="top_nav">
   <!-- <div id="top_left"></div> -->
   <div id="top_center">
-   <a href="/" *ngIf="selectedCountryName != null || nav_open"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
+   <a href="/" *ngIf="selectedCountryName != null || nav_open || where != null"><img  width="94" height="40" src="./assets/sun-beta-high-resolution-logo.png"/></a>
   </div>  
   <div id="top_right" (click)="toggle_nav()">
     <img *ngIf="!nav_open" width="40" height="40" src="./assets/icons8-menu-50.png"/>
@@ -123,26 +123,36 @@
    <tbody id="tbody_el">
    </tbody>
   </table>
-
 </div>
 
 
-<div id="nav" *ngIf="nav_open">
+<div class="overlay" *ngIf="nav_open" style="z-index: 10;">
   <ul>
     <li>
       <span class="bold">Menu</span>
     </li>
     <li>
-      Home
+      <a href="/">Home</a>
     </li>
     <li>
-      How it works
+      <a href="/how-it-works">How it works</a>
     </li>
     <li>
-      About
+      <a href="/about">About</a>
     </li>
     <li>
-      Contact
+      <a href="/contact">Contact</a>
     </li>
   </ul>
+</div>
+
+
+<div  class="overlay"  *ngIf="where=='how-it-works'">
+  <h2>How it works</h2>
+</div>
+<div  class="overlay"  *ngIf="where=='about'">
+  <h2>About</h2>
+</div>
+<div  class="overlay"  *ngIf="where=='contact'">
+  <h2>Contact</h2>
 </div>
