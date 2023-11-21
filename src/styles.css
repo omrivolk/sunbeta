@@ -202,7 +202,7 @@ ul {
             text-align: center;
         }
    
-
+/*
 .small_td{
  display: inline-flex;
       width: 54px;
@@ -216,7 +216,7 @@ ul {
 .small_td img {
     width: 12px;
     height: 12px;
-    margin-left: 5px; /* Optional: Add some spacing between text and image */
+    margin-left: 5px; 
   }
 .big_td{
  display: inline-block;
@@ -234,7 +234,7 @@ ul {
     text-align: center;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-}
+}*/
 
 #sectors_select #sectors_table {
             width: 100%;
@@ -354,6 +354,8 @@ th {
   width: 100%;
   display: flex;
   margin: 16px 0;
+        -webkit-tap-highlight-color: transparent;
+
 }
 
 .date_jump_section {
@@ -367,17 +369,24 @@ th {
   padding:0;
   border:0;
   font-size: 0.8rem;
- 
+       -webkit-tap-highlight-color: transparent;
+       cursor: pointer;
+
 }
 
 .date_select_section {
   display: flex;
   align-items: center;
   justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+
+
 }
 
 .date_jump_section img {
   width: 12px;
   height: 12px;
   margin: 1px; /* Optional: Add some spacing between text and image */
+        -webkit-tap-highlight-color: transparent;
+
 }
