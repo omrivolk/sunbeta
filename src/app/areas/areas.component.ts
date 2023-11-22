@@ -8,10 +8,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./areas.component.css']
 })
 export class AreasComponent implements OnInit {
+
   pathItems: string[] = [];
   selectedCountryName = null;
   selectedAreaName = null;
   selectedAreaNameForDisplay = null;
+  selectedSectorName = null;//'Dome';
+
   title = 'Sun Beta';
 
   where = null
@@ -70,6 +73,7 @@ export class AreasComponent implements OnInit {
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
+            data.sort((a, b) => a.name.localeCompare(b.name))
             this.countries = data;
             this.filtered_countries = this.countries
           });
@@ -82,6 +86,7 @@ export class AreasComponent implements OnInit {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        data.sort((a, b) => a.name.localeCompare(b.name))
         this.areas = data;
         this.filtered_areas = this.areas
       });
@@ -238,6 +243,7 @@ export class AreasComponent implements OnInit {
           return sortedKeys
         }
 
+
     getSectorTableRow(sector_name,day_shade_data){
         function toPoint(t,h){
           return `${t.toFixed(2)},${(1-h).toFixed(2)} `
@@ -282,7 +288,12 @@ export class AreasComponent implements OnInit {
             </svg>
             `
 
-            return `<tr><td>${sector_name}</td><td>${svg}</td></tr>`
+            if (this.selectedSectorName == null){
+              return `<tr><td>${sector_name}</td><td>${svg}</td></tr>`
+            } else {
+              return `<tr><td>${svg}</td></tr>`
+            }
+            
     }
 
     setHeaderSvg(day_shade_data){
@@ -300,7 +311,28 @@ export class AreasComponent implements OnInit {
             ${svg_texts}
         </svg>`
 
+
         document.getElementById("time_line").innerHTML = th_svg
+    }
+
+    setSectorsTable(day_shade_data){
+        this.setHeaderSvg(day_shade_data)
+
+        var table_rows = ''
+        var sortedKeys = this.getSortedSectorsKeys(day_shade_data)
+
+
+        for (var sector_name of sortedKeys){
+            if ([null,sector_name].includes(this.selectedSectorName)){
+              table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+            }
+        }
+        
+        document.getElementById("tbody_el").innerHTML = table_rows
+    }
+
+    setSectorsSvg(day_shade_data){
+
     }
 
     dateChanged(){
@@ -309,20 +341,10 @@ export class AreasComponent implements OnInit {
         var selectedDate = new Date(selectedDateValue);
         var month = selectedDate.getMonth() + 1; // Month is 0-based, so add 1
         var dayOfMonth = selectedDate.getDate();
-
         var day_shade_data = this.shade_data[month][dayOfMonth]
-
-        this.setHeaderSvg(day_shade_data)
-
-        var table_rows = ''
-        var sortedKeys = this.getSortedSectorsKeys(day_shade_data)
-
-
-        for (var sector_name of sortedKeys){
-            table_rows += this.getSectorTableRow(sector_name,day_shade_data)
-        }
         
-        document.getElementById("tbody_el").innerHTML = table_rows
+        this.setSectorsTable(day_shade_data) 
+                
     } 
 
 

@@ -18,9 +18,7 @@
    times at the crag<br>
   </div>
   <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredCountries()" id="countries_input"
-  placeholder="Type to filter countries">
-  <!-- <br><span style="">Countries</span> -->
-  
+  placeholder="Type to filter countries">  
   <ul class="areas_list">
     <div class="bold" style="padding: 10px;font-size:1.2rem;">Countries</div>
     <li *ngFor="let country of filtered_countries" (click)="openUrl(normName(country.name))"><a href="{{country.name}}">
@@ -44,34 +42,9 @@
 </div>
 
 
-
-
-
-
 <div id="sectors_select" class="full_page"  *ngIf="selectedAreaName">
-<h1>{{this.selectedAreaNameForDisplay}}</h1>
-
-<!--   <div id="date_div">
-<div class="big_td" *ngIf="tiny">
-      <input type="date" id="datePicker" (change)="dateChanged(event);"/>
-    </div><br>
-    <div class="small_td" (click)="changeMonth(-1)">
-      - Month
-    </div>
-      <div class="small_td" (click)="changeDay(-7)">
-        - Week
-    </div>
-    <div class="big_td" *ngIf="!tiny">
-      <input type="date" id="datePicker" (change)="dateChanged(event);"/>
-    </div>
-    <div class="small_td" (click)="changeDay(+7)">
-      Week +
-    </div>  
-    <div class="small_td" (click)="changeMonth(+1)">
-      Month +
-    </div> 
-
-  </div> -->
+<h1 *ngIf="selectedSectorName == null">{{this.selectedAreaNameForDisplay}}</h1>
+<h1 *ngIf="selectedSectorName != null">{{this.selectedSectorName}}</h1>
 
   <div class="date_jump_section date_select_section" *ngIf="tiny">
     <input type="date" id="datePicker" (change)="dateChanged(event);"/>
@@ -101,12 +74,10 @@
 </div>
 
 
-
-
   <table id="sectors_table">
    <thead>
-    <tr>
-     <th class="bold" (click)="sortBy('sector_name')" id="sort_by_name_th">
+    <tr  *ngIf="selectedSectorName == null">
+     <th  *ngIf="selectedSectorName == null" class="bold" (click)="sortBy('sector_name')" id="sort_by_name_th">
       <span  class="sort-by sort-by-down" id="sort_by_name_arrow"></span>Sector
      </th>
      <th (click)="sortBy('shade')" id="sort_by_shade_th">
@@ -114,7 +85,7 @@
      </th>
     </tr>
     <tr>
-     <th>
+     <th  *ngIf="selectedSectorName == null">
      </th>
      <th id="time_line">
      </th>

@@ -240,7 +240,7 @@ ul {
           position: sticky;
           top: 0px;
           background: white;
-          height: 30px;
+/*          height: 30px;*/
           text-align: center;
             vertical-align: middle;
             border: 0px solid #ccc;
@@ -248,7 +248,7 @@ ul {
         }
 
 #sectors_select td {
-            height: 30px;
+/*            height: 30px;*/
             text-align: center;
             vertical-align: middle;
             border: 0px solid #ccc;
