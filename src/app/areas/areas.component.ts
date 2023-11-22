@@ -11,6 +11,7 @@ export class AreasComponent implements OnInit {
 
   pathItems: string[] = [];
   selectedCountryName = null;
+  selectedCountryNameForDisplay = null;
   selectedAreaName = null;
   selectedAreaNameForDisplay = null;
   selectedSectorName = null;
@@ -51,6 +52,7 @@ export class AreasComponent implements OnInit {
           this.where = pathItems[0]
         } else {
           this.selectedCountryName = pathItems[0]
+          this.selectedCountryNameForDisplay = this.capitalizeFirstLetterOfWords(this.selectedCountryName)
           if (pathItems.length>1){
             this.selectedAreaName = pathItems[1]
             if (pathItems.length>2){
@@ -66,6 +68,13 @@ export class AreasComponent implements OnInit {
       }
     });
 
+  }
+
+  capitalizeFirstLetterOfWords(inputString: string): string {
+    return inputString
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   toggle_nav(){
