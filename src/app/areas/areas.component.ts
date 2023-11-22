@@ -317,7 +317,7 @@ export class AreasComponent implements OnInit {
         var max_hour =  Math.ceil(all_times[all_times.length-1])
 
       var fontSize = 0.5
-      if (this.selectedSectorName){
+      if (this.selectedSectorName && window.screen.width > 500){
         fontSize = 0.3
       }
       var svg_texts = ''
