@@ -44,7 +44,7 @@
 
 <div id="sectors_select" class="full_page"  *ngIf="selectedAreaName">
 <h1 *ngIf="selectedSectorName == null">{{this.selectedAreaNameForDisplay}}</h1>
-<h1 *ngIf="selectedSectorName != null">{{this.selectedSectorName}}</h1>
+<h1 *ngIf="selectedSectorName != null">{{this.selectedSectorNameForDisplay}}</h1>
 
   <div class="date_jump_section date_select_section" *ngIf="tiny">
     <input type="date" id="datePicker" (change)="dateChanged(event);"/>
@@ -77,7 +77,7 @@
   <table id="sectors_table">
    <thead>
     <tr  *ngIf="selectedSectorName == null">
-     <th  *ngIf="selectedSectorName == null" class="bold" (click)="sortBy('sector_name')" id="sort_by_name_th">
+     <th  class="bold" (click)="sortBy('sector_name')" id="sort_by_name_th">
       <span  class="sort-by sort-by-down" id="sort_by_name_arrow"></span>Sector
      </th>
      <th (click)="sortBy('shade')" id="sort_by_shade_th">
@@ -85,9 +85,9 @@
      </th>
     </tr>
     <tr>
-     <th  *ngIf="selectedSectorName == null">
+     <th  *ngIf="selectedSectorName == null"  class="set_height">
      </th>
-     <th id="time_line">
+     <th id="time_line" class="set_height">
      </th>
     </tr>
    </thead>

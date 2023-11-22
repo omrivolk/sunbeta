@@ -1,5 +1,5 @@
 // src/app/path-display/path-display.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +13,8 @@ export class AreasComponent implements OnInit {
   selectedCountryName = null;
   selectedAreaName = null;
   selectedAreaNameForDisplay = null;
-  selectedSectorName = null;//'Dome';
+  selectedSectorName = null;
+  selectedSectorNameForDisplay = null;
 
   title = 'Sun Beta';
 
@@ -33,13 +34,15 @@ export class AreasComponent implements OnInit {
 
   nav_open=false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private renderer: Renderer2) { }
 
   ngOnInit(): void {
 
     if (window.screen.width < 400) { 
       this.tiny = true;
     }
+
+
 
     this.route.url.subscribe(segments => {
       var pathItems = segments.map(segment => segment.path)
@@ -50,6 +53,9 @@ export class AreasComponent implements OnInit {
           this.selectedCountryName = pathItems[0]
           if (pathItems.length>1){
             this.selectedAreaName = pathItems[1]
+            if (pathItems.length>2){
+              this.selectedSectorName = pathItems[2]
+            }
             this.getShadeData()
           } else {
             this.getAreaList()
@@ -59,6 +65,7 @@ export class AreasComponent implements OnInit {
         this.getCountryList()
       }
     });
+
   }
 
   toggle_nav(){
@@ -93,6 +100,13 @@ export class AreasComponent implements OnInit {
   }
 
   getShadeData(){
+    if (this.selectedSectorName == null){
+      const style = this.renderer.createElement('style');
+      const css = '.set_height { height:30px }';
+      this.renderer.appendChild(style, this.renderer.createText(css));
+      this.renderer.appendChild(document.head, style);
+    }
+    
     var n_country_name = this.normName(this.selectedCountryName)
     var n_area_name = this.normName(this.selectedAreaName)
     var url = `./assets/countries/${n_country_name}/${n_area_name}.json`
@@ -289,7 +303,8 @@ export class AreasComponent implements OnInit {
             `
 
             if (this.selectedSectorName == null){
-              return `<tr><td>${sector_name}</td><td>${svg}</td></tr>`
+              var url = `./${this.selectedCountryName}/${this.selectedAreaName}/${sector_name}`
+              return `<tr><td class="set_height"><a href="${url}">${sector_name}</a></td><td class="set_height"><a href="${url}">${svg}</a></td></tr>`
             } else {
               return `<tr><td>${svg}</td></tr>`
             }
@@ -301,9 +316,13 @@ export class AreasComponent implements OnInit {
         var min_hour = Math.floor(all_times[0])
         var max_hour =  Math.ceil(all_times[all_times.length-1])
 
+      var fontSize = 0.5
+      if (this.selectedSectorName){
+        fontSize = 0.3
+      }
       var svg_texts = ''
         for (var h = min_hour; h < max_hour+1; h += 2) {
-          svg_texts+=`<text font-size="0.5" text-anchor="middle" x="${h}" y="0.9">
+          svg_texts+=`<text font-size="${fontSize}" text-anchor="middle" x="${h}" y="0.9">
                ${h}
             </text>`
         }
@@ -323,9 +342,14 @@ export class AreasComponent implements OnInit {
 
 
         for (var sector_name of sortedKeys){
-            if ([null,sector_name].includes(this.selectedSectorName)){
-              table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+          if (this.selectedSectorName){
+            if (this.selectedSectorName.toLowerCase() != sector_name.toLowerCase()){
+              continue
+            } else {
+              this.selectedSectorNameForDisplay = sector_name
             }
+          }
+              table_rows += this.getSectorTableRow(sector_name,day_shade_data)
         }
         
         document.getElementById("tbody_el").innerHTML = table_rows
