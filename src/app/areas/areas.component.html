@@ -47,7 +47,7 @@
 <h1 *ngIf="selectedSectorName == null">{{this.selectedAreaNameForDisplay}}</h1>
 <h1 *ngIf="selectedSectorName != null">{{this.selectedSectorNameForDisplay}}</h1>
 <span><a href="./{{selectedCountryName}}">{{this.selectedCountryNameForDisplay}}</a></span>
-<span *ngIf="selectedSectorName">, <a href="./{{selectedCountryName}}/{{selectedAreaName}}">{{this.selectedAreaNameForDisplay}}</a></span>
+<span *ngIf="selectedSectorName">, <a href="./{{selectedCountryName}}/{{selectedAreaName}}">{{this.selectedAreaNameForDisplay}}</a></span><br>
   <div class="date_jump_section date_select_section" *ngIf="tiny">
     <input type="date" id="datePicker" (change)="dateChanged(event);"/>
   </div>
