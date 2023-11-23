@@ -28,7 +28,7 @@
 </div>
 
 <div id="areas_select" class="full_page" *ngIf="selectedCountryName && selectedAreaName == null">
-  <h1>{{this.selectedCountryName}}</h1>
+  <h1>{{this.selectedCountryNameForDisplay}}</h1>
 
 	  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredAreas()" id="areas_input"
   placeholder="Type to filter areas">
