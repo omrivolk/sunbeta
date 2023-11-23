@@ -4,6 +4,7 @@ body {
  font-family: Roboto, "Helvetica Neue", sans-serif;
  max-width: 600px;
  margin: 0 auto;
+
 }
 *{
 -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -235,7 +236,7 @@ a{
 
 #sectors_select #sectors_table {
             width: 100%;
-            max-width: 600px;
+/*            max-width: 600px;*/
             border-collapse: collapse;
             margin: 0px auto;
         }
