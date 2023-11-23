@@ -352,13 +352,14 @@ export class AreasComponent implements OnInit {
 
         for (var sector_name of sortedKeys){
           if (this.selectedSectorName){
-            if (this.selectedSectorName.toLowerCase() != sector_name.toLowerCase()){
-              continue
-            } else {
+            if (this.normName(this.selectedSectorName) == this.normName(sector_name)){
               this.selectedSectorNameForDisplay = sector_name
-            }
-          }
               table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+            }
+          } else {
+            table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+          }
+              
         }
         
         document.getElementById("tbody_el").innerHTML = table_rows
