@@ -282,7 +282,14 @@ export class AreasComponent implements OnInit {
             var shades = sector_shade_data.map(point => point[1]);
             
             var points_str = toPoint(max_hour,0) + toPoint(min_hour,0)
+
+            if (min_hour < all_times[0] && shades[0]>0){
+             points_str += toPoint(min_hour,shades[0])
+            }
+
             points_str += toPoint(times[0],shades[0])
+
+            
 
             for (var i = 0; i < shades.length; i++) {
 
@@ -301,7 +308,7 @@ export class AreasComponent implements OnInit {
 
             var dh = 2;
             if (this.selectedSectorName){
-              dh = 2;
+              dh = 1;
             }
 
             var polylines=''
@@ -335,7 +342,7 @@ export class AreasComponent implements OnInit {
       var fontSize = 0.5
       var dh = 2;
       if (this.selectedSectorName){
-        dh = 2;
+        dh = 1;
         if (window.screen.width > 500){
           fontSize = 0.3
         }
