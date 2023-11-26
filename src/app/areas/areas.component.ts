@@ -298,8 +298,15 @@ export class AreasComponent implements OnInit {
             }
             points_str += toPoint(max_hour,shades[shades.length - 1])
 
+
+            var dh = 2;
+            if (this.selectedSectorName){
+              dh = 2;
+            }
+
             var polylines=''
-            for (var h = min_hour + 2; h < max_hour; h += 2) {
+
+            for (var h = min_hour + dh; h < max_hour; h += dh) {
               polylines+=`<polyline points="${h},1 ${h},0" fill="none" stroke="white" stroke-width="0.02" stroke-dasharray="0.1"/>`
             }
 
@@ -326,11 +333,15 @@ export class AreasComponent implements OnInit {
         var max_hour =  Math.ceil(all_times[all_times.length-1])
 
       var fontSize = 0.5
-      if (this.selectedSectorName && window.screen.width > 500){
-        fontSize = 0.3
+      var dh = 2;
+      if (this.selectedSectorName){
+        dh = 2;
+        if (window.screen.width > 500){
+          fontSize = 0.3
+        }
       }
       var svg_texts = ''
-        for (var h = min_hour; h < max_hour+1; h += 2) {
+        for (var h = min_hour; h < max_hour+1; h += dh) {
           svg_texts+=`<text font-size="${fontSize}" text-anchor="middle" x="${h}" y="0.9">
                ${h}
             </text>`
