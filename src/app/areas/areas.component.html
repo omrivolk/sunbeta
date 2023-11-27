@@ -17,8 +17,8 @@
    Daily sun and shade <br>
    times at the crag<br>
   </div>
-  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredCountries()" id="countries_input"
-  placeholder="Type to filter countries">  
+ <!--  <input type="text" [(ngModel)]="inputText" (keyup)="getFilteredCountries()" id="countries_input"
+  placeholder="Type to filter countries">   -->
   <ul class="areas_list">
     <div class="bold" style="padding: 10px;font-size:1.2rem;">Countries</div>
     <li *ngFor="let country of filtered_countries" (click)="openUrl(normName(country.name))"><a href="{{country.name}}">
