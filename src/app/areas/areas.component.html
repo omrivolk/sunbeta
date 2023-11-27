@@ -120,11 +120,31 @@
  <ng-container *ngIf="where=='how-it-works'">
   <h2>How it works</h2>
   <img src="./assets/how-it-works.png" style="width: 100%;"/>
-  <h3>The basics</h3>
+
+
+  <p><br></p>
+
+  <h3>Contents</h3>
+<ul id="menu">
+
+    <li><span (click)="scroll('the-basics')">The basics</span></li>
+    <li><span (click)="scroll('partially-shaded')">What does partially shaded mean exactly?</span></li>
+    <li><span (click)="scroll('how-accurate-short')">How accurate is it? - short answer</span></li>
+
+    <li><span (click)="scroll('how-do-you-get')">How do you get this information?</span></li>
+    <li><span (click)="scroll('daylight-saving-time')">What about summer daylight saving time?</span></li>
+    <li><span (click)="scroll('how-accurate-long')">How accurate is it? - Long answer</span></li>
+</ul>
+<p><br></p>
+
+  <h3 id="the-basics">The basics</h3>
   <p class="content">
   On top you have the local time of day. Black means shade. Yellow means sun. 
 </p>
-  <h3>What does partially shaded mean exactly?</h3>
+
+
+
+  <h3  id="partially-shaded">What does partially shaded mean exactly?</h3>
   <p class="content">
   When the diagram is part yellow and part black, the sector is partially shaded and the amount of black vs yellow represents how much of the sector is shaded. 
 
@@ -136,7 +156,7 @@
   <!-- <span class="bold">But</span>, this is really just a very rough estimate. For more details see the sections below.  -->
   </p>
 
-  <h3>How accurate is it? - Short answer</h3>
+  <h3 id="how-accurate-short">How accurate is it? - Short answer</h3>
   <p class="content">
 
     Where you see the sector is fully shaded or fully in the sun, that's almost always accurate.
@@ -150,17 +170,18 @@
 For more details see the long answer below
   </p>
 
-<h3>How do you get this information?</h3>
+<h3 id="how-do-you-get">How do you get this information?</h3>
 <p class="content">
   The first step is to map the sector. This can be done from a satellite photo for simple vertical or near vertical walls. For the more complicated sectors with corners, caves, bulges etc., a field mapping might be needed. 
 <br><br>
-  The second step is to run the map of the wall through a software that takes the sun's angle and direction at a given time, and then uses the shape of the wall to calculate how much of it is shaded. This calculation is never 100% correct but is usually good enough. 
+  The second step is to run the map of the wall through our app which takes the sun's angle and direction at a given time, and then uses the shape of the wall to calculate how much of it is shaded. This calculation is never 100% correct but is usually good enough. 
 </p>
-  <h3>What about summer daylight saving time?</h3>
+
+  <h3 id="daylight-saving-time">What about summer daylight saving time?</h3>
   <p>
   We do consider daylight saving time so the times you see should always be correct local time.
 </p>
-  <h3>How accurate is it? - Long answer</h3>
+  <h3 id="how-accurate-long">How accurate is it? - Long answer</h3>
   <p class="content">
 
   Accuracy depends a lot on 2 factors, how complex the shape of the sector is, and how good the mapping is. 

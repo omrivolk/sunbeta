@@ -399,5 +399,10 @@ export class AreasComponent implements OnInit {
                 
     } 
 
+    scroll(eid) {
+      document.getElementById(eid).scrollIntoView();
+      }
+
+
 
 }
