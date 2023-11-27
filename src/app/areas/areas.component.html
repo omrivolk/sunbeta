@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div id="countries_select" class="full_page" *ngIf="selectedCountryName == null">
+<div id="countries_select" class="full_page" *ngIf="selectedCountryName == null && where == null">
   <div style="font-size: 2rem;padding: 20px;margin:20px 0" class="bold">
     <img  id="large_logo"  src="./assets/sun-beta-high-resolution-logo.png"/>
      <br> <br>
@@ -116,34 +116,65 @@
 </div>
 
 
-<div  class="overlay"  *ngIf="where=='how-it-works'">
+<!-- <div  class="overlay"  *ngIf="where=='how-it-works'"> -->
+ <ng-container *ngIf="where=='how-it-works'">
   <h2>How it works</h2>
-  <img src="./assets/how-it-works.png"/>
+  <img src="./assets/how-it-works.png" style="width: 100%;"/>
 
   <h3>The basics</h3>
-  <p>
-  On top you have the time of day. Black means shade. Yellow means sun. 
+  <p class="content">
+  On top you have the local time of day. Black means shade. Yellow means sun. 
 </p>
   <h3>What does partially shaded mean exactly?</h3>
-  <p>
+  <p class="content">
   When the diagram is part yellow and part black, the sector is partially shaded and the amount of black vs yellow represents how much of the sector is shaded. 
 
   </p>
 
-  <p>
-  If you see half shade, half sun, it usually means that half the routes are shaded, but in rare cases could also mean that all routes are half shaded or some other mix. These rare cases usually happen in sectors that are not very uniform, meaning there are big corners and steepness or exposure varies a lot. 
+  <p class="content">
+  If you see half shade, half sun, it usually means that half the routes are shaded, but in rare cases could also mean that all routes are half shaded or some other mix. These rare cases usually happen in sectors that are not very uniform, meaning there are big corners and features or that steepness or exposure vary a lot. 
+
+  <!-- <span class="bold">But</span>, this is really just a very rough estimate. For more details see the sections below.  -->
   </p>
 
-  <span class="bold">But</span>, this is really just a very rough estimate. For more details see the sections below. 
+  <h3>How accurate is it? - Short answer</h3>
+  <p class="content">
 
-  <h3>How accurate is it?</h3>
+    Where you see the sector is fully shaded or fully in the sun, that's almost always accurate.
+    The sharp transitions from shaded to not shaded are usually accurate to within 15 - 30 minutes. 
+     Where you see the sector is partially shaded, or a gradual change, you should consider the information as a rough estimate.
+<br>
+<br>
+     In any case, it's way more accurate than saying "morning shade" or something similar as most guidebooks say...
+<br>
+<br>
+For more details see the long answer below
+  </p>
 
+<h3>How do you get this information?</h3>
+  The first step is to map the sector. This can be done from a satellite photo for simple vertical or near vertical walls. For the more complicated sectors with corners, caves, bulges etc., a field mapping might be needed. 
+<br><br>
+  The second step is to run the map of the wall through a software that takes the sun's angle and direction at a given time, and then uses the shape of the wall to calculate how much of it is shaded. This calculation is never 100% correct but is usually good enough. 
 
-  <h3>How do you get this information?</h3>
+  <h3>What about summer daylight saving time?</h3>
+  We do consider daylight saving time so the times you see should always be correct local time.
+  <h3>How accurate is it? - Long answer</h3>
+  <p class="content">
 
+  Accuracy depends a lot on 2 factors, how complex the shape of the sector is, and how good the mapping is. 
 
-  <h3>What about daylight saving time?</h3>
+<br><br>
+<span class="bold">Uniform vertical walls - </span>The simplest walls are uniform vertical or near vertical and without any big features, corners or other changes. For these walls, the diagram should be spot on with a sharp transition from fully shaded to fully in the sun. For these walls all we need to know is the exposure direction.
+<br><br>
+<span class="bold">Uniform slabs or overhangs - </span> A slightly more complex case, but still pretty simple, is a uniform slab or overhang. In this case we also need to map the exact angle of the wall. 
+<br><br>
+<span class="bold">Complex walls - </span> Walls which have corners, angle and exposure changes or other complex features, require some sort of 3D mapping to get a reasonable. 
+<br><br>
+<span class="bold">Winter vs summer accuracy - </span>
+Generally speaking, our info is expected to be more accurate in winter, when the sun is low. This is because the lower the sun is, it mostly shines "sideways" and not "downwards". This way features such as overhangs, slabs, roofs and bulges which are relatively harder to map become less significant, and the exposure direction which is easy to map, becomes more important.  
+</p>
 
+ </ng-container>
 
 <!--   <p>
     Hi, my name is Om and I'm a "professional holiday climber". I don't climb that hard but I have taken to a professional level the process of optimizing my climbing days. 
@@ -152,4 +183,4 @@
     One of the main factors is sun and shade times at the crag and guidebooks only give you a general morning/evening description so at some point I realized it can't be that hard to figure out exactly. 
   </p>
  -->
-</div>
+<!-- </div> -->
