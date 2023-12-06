@@ -121,7 +121,7 @@ ul {
 
 #areas_input {
 
-    width:calc(100% - 100px);
+    width:calc(100% - 60px);
     margin: 0 auto;
     font-size:1.2rem;
     background-image: url('./assets/mg.svg');

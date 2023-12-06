@@ -116,8 +116,10 @@ export class AreasComponent implements OnInit {
       this.renderer.appendChild(document.head, style);
     }
     
-    var n_country_name = this.normName(this.selectedCountryName)
-    var n_area_name = this.normName(this.selectedAreaName)
+    var n_country_name = this.selectedCountryName.toLowerCase()
+    var n_area_name = this.selectedAreaName.toLowerCase()
+
+
     var url = `./assets/countries/${n_country_name}/${n_area_name}.json`
     fetch(url)
     .then((res) => res.json())
@@ -195,11 +197,11 @@ export class AreasComponent implements OnInit {
 
   normName(s: string): string {
       s = s.trim();
-      s = s.replace("'","")
+      // s = s.replace("'","")
       s = s.replace("(","")
       s = s.replace(")","")
       s = s.toLowerCase();
-      s = s.split(' ').join('_');
+      // s = s.split(' ').join('_');
       return s;
   }
 
@@ -249,14 +251,15 @@ export class AreasComponent implements OnInit {
     }
 
    getSortedSectorsKeys(day_shade_data){
+
           var sortedKeys;
           if (this.sort_type == 'shade'){
               sortedKeys = Object.keys(day_shade_data['sectors']).sort(function(a, b) {
-                  return day_shade_data['sectors'][b].total_shade_hours - day_shade_data['sectors'][a].total_shade_hours;
+                  return day_shade_data['sectors'][b][1] - day_shade_data['sectors'][a][1];
               });
           } else if (this.sort_type == 'sun'){
               sortedKeys = Object.keys(day_shade_data['sectors']).sort(function(a, b) {
-                  return day_shade_data['sectors'][a].total_shade_hours - day_shade_data['sectors'][b].total_shade_hours;
+                  return day_shade_data['sectors'][a][1] - day_shade_data['sectors'][b][1];
               });
           } else if (this.sort_type == 'a_to_z'){
               sortedKeys = Object.keys(day_shade_data['sectors']).sort()
@@ -272,18 +275,17 @@ export class AreasComponent implements OnInit {
           return `${t.toFixed(2)},${(1-h).toFixed(2)} `
         }
 
-            var all_times = day_shade_data['times']
-            var min_hour = Math.floor(all_times[0])
-            var max_hour =  Math.ceil(all_times[all_times.length-1])
+            var min_hour = Math.floor(day_shade_data['times'][0])
+            var max_hour =  Math.ceil(day_shade_data['times'][1])
 
 
-            var sector_shade_data = day_shade_data['sectors'][sector_name]['sector_shade_times']
-            var times = sector_shade_data.map(point => point[0]);
-            var shades = sector_shade_data.map(point => point[1]);
+            var sector_shade_data = day_shade_data['sectors'][sector_name][0]//['sector_shade_times']
+            var times = sector_shade_data[0];
+            var shades = sector_shade_data[1];
             
             var points_str = toPoint(max_hour,0) + toPoint(min_hour,0)
 
-            if (min_hour < all_times[0] && shades[0]>0){
+            if (min_hour < day_shade_data['times'][0] && shades[0]>0){
              points_str += toPoint(min_hour,shades[0])
             }
 
@@ -335,14 +337,13 @@ export class AreasComponent implements OnInit {
     }
 
     setHeaderSvg(day_shade_data){
-      var all_times = day_shade_data['times']
-        var min_hour = Math.floor(all_times[0])
-        var max_hour =  Math.ceil(all_times[all_times.length-1])
+      var min_hour = Math.floor(day_shade_data['times'][0])
+      var max_hour =  Math.ceil(day_shade_data['times'][1])
 
       var fontSize = 0.5
       var dh = 2;
       if (this.selectedSectorName){
-        dh = 1;
+        dh = 2;
         if (window.screen.width > 500){
           fontSize = 0.3
         }
@@ -361,21 +362,32 @@ export class AreasComponent implements OnInit {
         document.getElementById("time_line").innerHTML = th_svg
     }
 
-    setSectorsTable(day_shade_data){
+    setSectorsTable(month,dayOfMonth) {
+
+        var day_shade_data = {
+          'sectors':{}
+        }
+        for (var sector_name in this.shade_data['sectors']){
+          day_shade_data['sectors'][sector_name] =  this.shade_data['sectors'][sector_name][month][dayOfMonth]
+        }
+
+        var all_times = this.shade_data['sectors'][sector_name][month][dayOfMonth][0][0]
+        day_shade_data['times'] = [all_times[0], all_times[all_times.length - 1]]
+
         this.setHeaderSvg(day_shade_data)
 
         var table_rows = ''
         var sortedKeys = this.getSortedSectorsKeys(day_shade_data)
 
 
-        for (var sector_name of sortedKeys){
+        for (sector_name of sortedKeys){
           if (this.selectedSectorName){
             if (this.normName(this.selectedSectorName) == this.normName(sector_name)){
               this.selectedSectorNameForDisplay = sector_name
-              table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+              table_rows += this.getSectorTableRow(sector_name, day_shade_data)
             }
           } else {
-            table_rows += this.getSectorTableRow(sector_name,day_shade_data)
+            table_rows += this.getSectorTableRow(sector_name, day_shade_data)
           }
               
         }
@@ -393,9 +405,9 @@ export class AreasComponent implements OnInit {
         var selectedDate = new Date(selectedDateValue);
         var month = selectedDate.getMonth() + 1; // Month is 0-based, so add 1
         var dayOfMonth = selectedDate.getDate();
-        var day_shade_data = this.shade_data[month][dayOfMonth]
+        // var day_shade_data = this.shade_data[month][dayOfMonth]
         
-        this.setSectorsTable(day_shade_data) 
+        this.setSectorsTable(month,dayOfMonth) 
                 
     } 
 
