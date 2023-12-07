@@ -164,7 +164,7 @@ export class AreasComponent implements OnInit {
       return true
     }
 
-    if (area.localName.toLowerCase().includes(str)){
+    if (area.localName && area.localName.toLowerCase().includes(str)){
       return true
     }
 
