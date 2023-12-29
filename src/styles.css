@@ -275,6 +275,7 @@ a{
 #sectors_select td:nth-child(2) {
             /* Let the right column take the remaining space */
             width: 75%;
+            background-color: green;
 
         }
 
