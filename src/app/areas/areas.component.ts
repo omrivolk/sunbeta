@@ -320,7 +320,7 @@ export class AreasComponent implements OnInit {
             }
 
             var svg = ` 
-            <svg viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1">
+            <svg viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1"  preserveAspectRatio="xMidYMid none">
               <polygon points='${max_hour},1 ${min_hour},1 ${min_hour},0 ${max_hour},0'/>
               <polygon points='${points_str}'/>
               ${polylines}
