@@ -269,13 +269,13 @@ a{
 #sectors_select td:nth-child(1) {
             /* Set the width for the left column */
             width: 25%;
-/*            background-color: red;*/
+            background-color: red;
         }
 
 #sectors_select td:nth-child(2) {
             /* Let the right column take the remaining space */
             width: 75%;
-/*            background-color: green;*/
+            background-color: green;
 
         }
 
