@@ -109,12 +109,12 @@ export class AreasComponent implements OnInit {
   }
 
   getShadeData(){
-    if (this.selectedSectorName == null){
-      const style = this.renderer.createElement('style');
-      const css = '.set_height { height:30px }';
-      this.renderer.appendChild(style, this.renderer.createText(css));
-      this.renderer.appendChild(document.head, style);
-    }
+    // if (this.selectedSectorName == null){
+    //   const style = this.renderer.createElement('style');
+    //   const css = '.set_height { height:30px }';
+    //   this.renderer.appendChild(style, this.renderer.createText(css));
+    //   this.renderer.appendChild(document.head, style);
+    // }
     
     var n_country_name = this.selectedCountryName.toLowerCase()
     var n_area_name = this.selectedAreaName.toLowerCase()
@@ -320,7 +320,7 @@ export class AreasComponent implements OnInit {
             }
 
             var svg = ` 
-            <svg viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1"  preserveAspectRatio="xMidYMid none">
+            <svg viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1" >
               <polygon points='${max_hour},1 ${min_hour},1 ${min_hour},0 ${max_hour},0'/>
               <polygon points='${points_str}'/>
               ${polylines}
