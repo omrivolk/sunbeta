@@ -273,7 +273,7 @@ a{
 
 #sectors_select td:nth-child(2) {
             /* Let the right column take the remaining space */
-            width: auto;
+            width: 75%;
 
         }
 
