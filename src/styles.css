@@ -274,15 +274,17 @@ a{
 #sectors_select td:nth-child(2) {
             /* Let the right column take the remaining space */
             width: auto;
+/*            background-color: red;*/
 
         }
 
 
 #sectors_select svg {
-            width: 100%;
-            height: 100%;
+/*            width: 100%;*/
+            height: 30px;
+            width: 90%;
             z-index: 1000;
-            max-height: 40px;
+/*            max-height: 40px;*/
         }
 
 #sectors_select svg polygon:nth-child(2) {

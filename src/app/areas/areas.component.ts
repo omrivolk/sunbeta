@@ -291,9 +291,7 @@ export class AreasComponent implements OnInit {
 
             points_str += toPoint(times[0],shades[0])
 
-            console.log(sector_name)
-            console.log(sector_shade_data)
-            console.log(points_str)
+
 
             for (var i = 0; i < shades.length; i++) {
 
