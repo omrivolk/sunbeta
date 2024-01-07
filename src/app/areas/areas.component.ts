@@ -109,9 +109,9 @@ export class AreasComponent implements OnInit {
   }
 
   getShadeData(){
-    if (this.selectedSectorName == null){
+    if (this.selectedSectorName != null){
       const style = this.renderer.createElement('style');
-      const css = '.set_height { height:30px }';
+      const css = '.set_height { height:45px }';
       this.renderer.appendChild(style, this.renderer.createText(css));
       this.renderer.appendChild(document.head, style);
     }
@@ -320,7 +320,7 @@ export class AreasComponent implements OnInit {
             }
 
             var svg = ` 
-            <svg viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1">
+            <svg  viewBox="${min_hour-1} 0 ${max_hour - min_hour+2} 1">
               <polygon points='${max_hour},1 ${min_hour},1 ${min_hour},0 ${max_hour},0'/>
               <polygon points='${points_str}'/>
               ${polylines}
@@ -329,7 +329,7 @@ export class AreasComponent implements OnInit {
 
             if (this.selectedSectorName == null){
               var url = `./${this.selectedCountryName}/${this.selectedAreaName}/${sector_name}`
-              return `<tr><td class="set_height"><a href="${url}">${sector_name}</a></td><td class="set_height"><a href="${url}">${svg}</a></td></tr>`
+              return `<tr><td><a href="${url}">${sector_name}</a></td><td><a href="${url}">${svg}</a></td></tr>`
             } else {
               return `<tr><td>${svg}</td></tr>`
             }
@@ -354,7 +354,7 @@ export class AreasComponent implements OnInit {
                ${h}
             </text>`
         }
-        var th_svg = `<svg viewbox="${min_hour-1} 0 ${max_hour-min_hour+2} 1">
+        var th_svg = `<svg  class="set_height" viewbox="${min_hour-1} 0 ${max_hour-min_hour+2} 1">
             ${svg_texts}
         </svg>`
 
